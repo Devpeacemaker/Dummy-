@@ -1,13 +1,11 @@
-const { exec } = require("child_process");
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
-const token = process.env.GITHUB_TOKEN;
-const realRepo = "https://" + token + "@github.com/Devpeacemaker/unknown-error.git";
+app.get('/', (req, res) => {
+  res.send('🕶️ Peace Bot Is Live... but this is just a test!');
+});
 
-exec(
-  `git clone ${realRepo} realbot && cd realbot && npm install && node .`,
-  (err, stdout, stderr) => {
-    if (err) return console.error("❌ Error:", err);
-    console.log(stdout);
-    console.error(stderr);
-  }
-);
+app.listen(port, () => {
+  console.log(`Fake PEACE-MD bot running on port ${port}`);
+});
